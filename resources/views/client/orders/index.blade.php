@@ -22,21 +22,15 @@
                           <th>customer_address</th>
                           <th>note</th>
                           <th>payment</th>
-
-
                       </tr>
-
                       @foreach ($orders as $item)
                           <tr>
                               <td>{{ $item->id }}</td>
-
                               <td>{{ $item->status }}</td>
                               <td>${{ $item->total }}</td>
-
                               <td>${{ $item->ship }}</td>
                               <td>{{ $item->customer_name }}</td>
                               <td>{{ $item->customer_email }}</td>
-
                               <td>{{ $item->customer_address }}</td>
                               <td>{{ $item->note }}</td>
                               <td>{{ $item->payment }}</td>

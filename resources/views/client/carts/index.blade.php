@@ -2,8 +2,6 @@
   @extends('client.layouts.app')
   @section('title', 'Cart')
   @section('content')
-
-
       <div class="row px-xl-5">
           @if (session('message'))
               <div class="row">
@@ -83,7 +81,7 @@
               </table>
           </div>
           <div class="col-lg-4">
-              <form class="mb-5" method="POST" action="{{ route('client.carts.apply_coupon') }}">
+              <form class="mb-5" method="POST" action="">
                   @csrf
                   <div class="input-group">
                       <input type="text" class="form-control p-4" value="{{ Session::get('coupon_code') }}"
@@ -120,7 +118,7 @@
                           <h5 class="font-weight-bold">Total</h5>
                           <h5 class="font-weight-bold total-price-all"></h5>
                       </div>
-                      <a href="{{ route('client.checkout.index') }}" class="btn btn-block btn-primary my-3 py-3">Proceed
+                      <a href="" class="btn btn-block btn-primary my-3 py-3">Proceed
                           To Checkout</a>
                   </div>
               </div>

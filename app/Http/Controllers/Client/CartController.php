@@ -36,10 +36,10 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $cart = $this->cart->firtOrCreateBy(auth()->user()->id)->load('products');
-
         return view('client.carts.index', compact('cart'));
     }
 
@@ -66,9 +66,7 @@ class CartController extends Controller
         } else {
             $cartProduct->update($dataUpdate);
         }
-
         $cart =  $cartProduct->cart;
-
         return response()->json([
             'product_cart_id' => $id,
             'cart' => new CartResource($cart),
@@ -106,13 +104,11 @@ class CartController extends Controller
     public function checkout()
     {
         $cart = $this->cart->firtOrCreateBy(auth()->user()->id)->load('products');
-
         return view('client.carts.checkout', compact('cart'));
     }
-
+    
     public function processCheckout(CreateOrderRequest $request)
     {
-
         $dataCreate = $request->all();
         $dataCreate['user_id'] = auth()->user()->id;
         $dataCreate['status'] = 'pending';
@@ -128,9 +124,30 @@ class CartController extends Controller
         }
         $cart = $this->cart->firtOrCreateBy(auth()->user()->id);
         $cart->products()->delete();
-        Session::forget(['coupon_id', 'discount_amount_price', 'coupon_code']);
-
+        Session::forget(['coupon_id', 'discount_amount_price', 'coupon_code']);      
+        return redirect()->route('client.orders.index');
     }
+    public function store(Request $request){
+        if($request->product_size){
 
+            $product = $this->product->findOrFail($request->product_id);
+            $cart = $this->cart->firtOrCreateBy(auth()->user()->id);
+            $cartProduct =$this->cartProduct->getBy($cart->id,$product->id,$request->product_size); 
+            if($cartProduct){
+                $quantily = $cartProduct->product_quantity;
+                $cartProduct->update(['product_quantity' => ($quantily + $request->product_quantity)]);
+            }else{
+                $dataCreate['cart_id'] = $cart->id;
+                $dataCreate['product_size'] = $request->product_size;
+                $dataCreate['product_quantity'] = $request->product_quantity ?? 1;
+                $dataCreate['product_price'] = $product->price;
+                $dataCreate['product_id'] = $request->product_id;      
+                $this->cartProduct->create($dataCreate);
+            }
+            return back()->with(['message'=> 'Them Thanh Cong']);
+        }else{
+            return back()->with(['message'=> 'Ban chua chon size']);
+        }
+    }
 
 }

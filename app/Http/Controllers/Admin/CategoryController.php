@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = $this->category->latest('id')->paginate(3);
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.index', compact('categories'))->with('i',(request()->input('page',1)-1)*3);
     }
 
     /**

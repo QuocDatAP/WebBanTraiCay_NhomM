@@ -18,7 +18,7 @@
         <div>
             <table class="table table-hover">
                 <tr>
-                    <th>#</th>
+                    <th>STT</th>
                     <th>Name</th>
                     <th>DisplayName</th>
                     <th>Action</th>
@@ -26,7 +26,8 @@
 
                 @foreach ($roles as $role)
                     <tr>
-                        <td>{{ $role->id }}</td>
+                       
+                        <td>{{++$i}}</td>
                         <td>{{ $role->name }}</td>
 
                         <td>{{ $role->display_name }}</td>
