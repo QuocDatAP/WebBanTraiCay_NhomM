@@ -18,7 +18,7 @@
         <div>
             <table class="table table-hover">
                 <tr>
-                    <th>#</th>
+                    <th>STT</th>
                     <th>Image</th>
                     <th>Name</th>
                     <th>Price</th>
@@ -28,7 +28,7 @@
 
                 @foreach ($products as $item)
                     <tr>
-                        <td>{{ $item->id }}</td>
+                        <td>{{++$i}}</td>
                         <td><img src="{{ $item->image_path }}" width="200px" height="200px" alt=""></td>
                         <td>{{ $item->name }}</td>
 
@@ -37,7 +37,7 @@
                         <td>{{ $item->sale }}</td>
                         <td>
                             <a href="{{ route('products.edit', $item->id) }}" class="btn btn-warning">Edit</a>
-                        @endcan
+                        
                         @can('show-product')
                             <a href="{{ route('products.show', $item->id) }}" class="btn btn-warning">Show</a>
                         @endcan

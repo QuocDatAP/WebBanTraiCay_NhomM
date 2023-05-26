@@ -16,7 +16,7 @@
         <div>
             <table class="table table-hover">
                 <tr>
-                    <th>#</th>
+                    <th>STT</th>
                     <th>Image</th>
                     <th>Name</th>
                     <th>Email</th>
@@ -26,7 +26,7 @@
 
                 @foreach ($users as $item)
                     <tr>
-                        <td>{{ $item->id }}</td>
+                        <td>{{++$i}}</td>
                         <td><img src="{{ $item->image_path }}" width="200px" height="200px" alt=""></td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>

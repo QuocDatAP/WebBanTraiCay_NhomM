@@ -29,6 +29,5 @@ class OrderController extends Controller
         return  response()->json([
             'message' => 'success'
         ], Response::HTTP_OK);
-
     }
 }

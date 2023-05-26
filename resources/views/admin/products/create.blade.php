@@ -30,7 +30,6 @@
                         <span class="text-danger"> {{ $message }}</span>
                     @enderror
                 </div>
-
                 <div class="input-group input-group-static mb-4">
                     <label>Price</label>
                     <input type="number" step="0.1" value="{{ old('price') }}" name="price" class="form-control">
@@ -46,9 +45,6 @@
                         <span class="text-danger"> {{ $message }}</span>
                     @enderror
                 </div>
-
-
-
                 <div class="form-group">
                     <label>Description</label>
                     <div class="row w-100 h-100">
@@ -127,7 +123,6 @@
     </style>
 @endsection
 @section('script')
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
         integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -135,10 +130,9 @@
     <script>
         let sizes = [{
             id: Date.now(),
-            size: 'M',
+            size: 'Loại nhỏ',
             quantity: 1
         }];
     </script>
-
     <script src="{{ asset('admin/assets/js/product/product.js') }}"></script>
 @endsection

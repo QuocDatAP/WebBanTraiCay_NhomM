@@ -32,7 +32,7 @@ class UserController extends Controller
     {
         $users =  $this->user->latest('id')->paginate(5);
 
-        return view('admin.users.index', compact('users'));
+        return view('admin.users.index', compact('users'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**

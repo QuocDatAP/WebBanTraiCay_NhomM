@@ -33,7 +33,7 @@ class ProductController extends Controller
     {
         $products =  $this->product->latest('id')->paginate(5);
 
-        return view('admin.products.index', compact('products'));
+        return view('admin.products.index', compact('products'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**

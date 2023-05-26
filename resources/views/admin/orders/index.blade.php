@@ -13,7 +13,7 @@
                   <div>
                       <table class="table table-hover">
                           <tr>
-                              <th>#</th>
+                              <th>STT</th>
                               <th>status</th>
                               <th>total</th>
                               <th>ship</th>
@@ -23,12 +23,10 @@
                               <th>note</th>
                               <th>payment</th>
                           </tr>
-
                           @foreach ($orders as $item)
                               <tr>
-                                  <td>{{ $item->id }}</td>
+                                  <td>{{++$i}}</td>
                                   <td>
-
                                       <div class="input-group input-group-static mb-4">
                                           <select name="status" class="form-control select-status"
                                               data-action="{{ route('admin.orders.update_status', $item->id) }}">
@@ -38,18 +36,15 @@
                                                   </option>
                                               @endforeach
                                           </select>
-
                                   </td>
                                   <td>${{ $item->total }}</td>
 
                                   <td>${{ $item->ship }}</td>
                                   <td>{{ $item->customer_name }}</td>
                                   <td>{{ $item->customer_email }}</td>
-
                                   <td>{{ $item->customer_address }}</td>
                                   <td>{{ $item->note }}</td>
                                   <td>{{ $item->payment }}</td>
-
                               </tr>
                           @endforeach
                       </table>

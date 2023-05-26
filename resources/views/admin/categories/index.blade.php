@@ -18,7 +18,7 @@
         <div>
             <table class="table table-hover">
                 <tr>
-                    <th>#</th>
+                    <th>STT</th>
                     <th>Name</th>
                     <th>Parent Name</th>
                     <th>Action</th>
@@ -26,7 +26,7 @@
 
                 @foreach ($categories as $item)
                     <tr>
-                        <td>{{ $item->id }}</td>
+                        <td>{{++$i}}</td>
                         <td>{{ $item->name }}</td>
 
                         <td>{{ $item->parent_name }}</td>

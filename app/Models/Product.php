@@ -38,12 +38,6 @@ class Product extends Model
         return $this->categories()->sync($categoryIds);
     }
 
-    // public function assignDetail($details)
-    // {
-    //     return $this->de()->sync($categoryIds);
-    // }
-
-
     public function getBy($dataSearch, $categoryId)
     {
         return $this->whereHas('categories', fn($q) => $q->where('category_id', $categoryId))->paginate(10);
@@ -51,7 +45,7 @@ class Product extends Model
 
     public function getImagePathAttribute()
     {
-       return asset($this->images->count() > 0 ? 'upload/' . $this->images->first()->url : 'upload/default.png');
+        return asset($this->images->count() > 0 ? 'upload/' . $this->images->first()->url : 'upload/default.png');
     }
 
     public function getSalePriceAttribute()

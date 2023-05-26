@@ -28,7 +28,7 @@ class CounponController extends Controller
     {
         $coupons =  $this->coupon->latest('id')->paginate(5);
 
-        return view('admin.coupons.index', compact('coupons'));
+        return view('admin.coupons.index', compact('coupons'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
